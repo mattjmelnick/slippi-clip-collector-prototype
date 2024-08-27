@@ -4,14 +4,28 @@ from tkinter import messagebox
 import os
 import shutil
 
+replay_path = ""
+clip_path = ""
+
 def select_replay_folder() -> str:
-    pass
+    global replay_path
+    replay_path = StringVar()
+    replay_folder = filedialog.askdirectory(title = "Select Replay Folder")
+    replay_path.set(replay_folder)
+    replay_path_label = Label(screen, textvariable = replay_path)
+    replay_path_label.place(x = 275, y = 95)
 
 def select_clips_folder() -> str:
-    pass
+    global clip_path
+    clip_path = StringVar()
+    clip_folder = filedialog.askdirectory(title = "Select Clips Folder")
+    clip_path.set(clip_folder)
+    clip_path_label = Label(screen, textvariable = clip_path)
+    clip_path_label.place(x = 275, y = 220)
 
 def move_file_to_clips_folder() -> None:
-    pass
+    print(replay_path.get())
+    print(clip_path.get())
 
 def delete_file() -> None:
     pass
