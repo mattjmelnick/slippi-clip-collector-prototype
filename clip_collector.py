@@ -33,11 +33,21 @@ def move_file_to_clips_folder() -> None:
         file_list = glob.iglob(file_path)
         newest_file = max(file_list, key=os.path.getmtime)
     
+    saved_msg = Label(screen, text="File Moved")
+    saved_msg.place(x=100, y=425)
     shutil.move(newest_file, clip_path_string)
 
-
 def delete_file() -> None:
-    pass
+    replay_path_string = replay_path.get() + '/'
+
+    for _ in os.listdir(replay_path_string):
+        file_path = replay_path_string + "*.slp"
+        file_list = glob.iglob(file_path)
+        newest_file = max(file_list, key=os.path.getmtime)
+    
+    deleted_msg = Label(screen, text="File Deleted")
+    deleted_msg.place(x=500, y=425)
+    os.remove(newest_file)
 
 
 root = Tk()
