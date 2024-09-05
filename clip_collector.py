@@ -9,9 +9,9 @@ class App(Tk):
     def __init__(self):
         super().__init__()
         self.title("Slippi Clip Collector")
-        self.geometry("900x550+800+250")
+        self.geometry("800x500+900+250")
         self.resizable(width=False, height=False)
-        self.screen = Frame(self, width=900, height=550)
+        self.screen = Frame(self, width=800, height=500)
         self.screen.grid()
 
         self.moved_count = 0
