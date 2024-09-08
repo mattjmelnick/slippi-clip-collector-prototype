@@ -49,6 +49,9 @@ class App(Tk):
         clip_path_label.place(x=275, y=220)
 
     def move_file_to_clips_folder(self) -> None:
+        if self.replay_path == "" or self.clip_path == "":
+            self.show_warning()
+
         replay_path_string = self.replay_path.get() + '/'
         clip_path_string = self.clip_path.get() + '/'
 
@@ -63,6 +66,9 @@ class App(Tk):
         shutil.move(newest_file, clip_path_string)
 
     def delete_file(self) -> None:
+        if self.replay_path == "" or self.clip_path == "":
+            self.show_warning()
+
         replay_path_string = self.replay_path.get() + '/'
 
         for _ in os.listdir(replay_path_string):
@@ -74,6 +80,9 @@ class App(Tk):
         deleted_msg = Label(self.screen, text=f"Deleted {self.deleted_count} files")
         deleted_msg.place(x=500, y=425)
         os.remove(newest_file)
+
+    def show_warning(self) -> None:
+        messagebox.showwarning(title="No folder selected", message="Select folder(s)", parent=self)
 
 if __name__ == "__main__":
     app = App()
